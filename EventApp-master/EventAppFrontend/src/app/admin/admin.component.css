@@ -1,0 +1,113 @@
+#navBar{
+    position: fixed;
+    margin: 1vmax;
+}
+
+.rightcentered{
+    position: fixed;
+    top: 5%;
+    right: 5%;
+}
+
+#loginOuterbox{
+    width: 26vmax;
+    height: 33vmax;
+    border-radius: 1vmax;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 .4vmax 1.2vmax 0 rgba(0, 0, 0, 0.2), 0 .8vmax 2vmax 0 rgba(0, 0, 0, 0.19);
+    font-size: 3vmax;
+    font-family: 'Noto Serif Khojki', serif;
+    padding-top:2vmax ;
+}
+
+
+#logBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logLabel{
+    font-size: 1vmax;
+    font-weight: 400;
+}
+.logInp{
+    width: 16vmax;
+    height: 2.9vmax;
+    margin-bottom: -1vmax;
+    font-size: .8vmax;
+    padding-left: 2vmax;
+    font-family: 'Noto Serif Khojki', serif;
+    background: none;
+    border: none;
+    border-bottom: .1vmax solid grey;
+}
+
+.logInp:focus{
+    background: none;
+}
+
+.loginmsg{
+    width: 16vmax;
+    font-size: .8vmax;
+    padding: 0%;
+    position: absolute;
+    color: #9c0c0c;
+    margin-top: 1vmax;
+    text-align: right;
+}
+.logBtn{
+    width: 16vmax;
+    height: 3.3vmax;
+    font-size: 1.2vmax;
+    margin-top: 2.4vmax;
+    margin-bottom: -1vmax;
+    font-weight: 100;
+}
+.logBtn:hover{
+    font-size: 1.25vmax;
+    border: .1vmax solid green;
+}
+#linkBox{
+   position: absolute;
+   text-align: center;
+   display: flex;
+   margin-top: 5vmax;
+   margin-left: -3vmax;
+}
+#link{
+    width: 11vmax;
+    margin-top: .5vmax;
+    font-size: 1vmax;
+    text-decoration: none;
+    color: #9c0c0c;
+    transition: all 0.2s ease-in-out;
+
+}
+#link:hover{
+    font-size: 1.1vmax;
+    margin-top: .1vmax;
+}
+.iconIn{
+    position: absolute;
+    font-size: 1vmax;
+    margin-top: -1.1vmax;
+    margin-left:.5vmax ;
+}
+
+.errorMsg{
+    width: 16vmax;
+    font-size: .8vmax;
+    position: absolute;
+    margin-top: 1vmax;
+    text-align: end;
+    font-weight: 600;
+    font-family: 'EB Garamond', serif;
+    color: rgb(158, 10, 10);
+}
+
+.showHide{
+    margin-top: -1vmax;
+    margin-left: 13.5vmax;
+    font-size: 1vmax;
+}
