@@ -1,0 +1,130 @@
+html{
+    background-color: black;
+}
+p{
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    font-size: medium;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.button {
+border: none;
+color: rgb(182, 229, 86);
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 30px;
+background-color: rgb(4, 10, 17);
+border-radius: 4px;
+padding: 20px;
+width: 200px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+}
+
+.button span {
+cursor: pointer;
+display: inline-block;
+position: relative;
+transition: 0.5s;
+}
+
+.button span:after {
+content: '\00bb';
+position: absolute;
+opacity: 0;
+top: 0;
+right: -20px;
+transition: 0.5s;
+}
+
+.button:hover span {
+padding-right: 25px;
+box-shadow: 0 12px 16px 0 rgba(108, 95, 95, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button:hover span:after {
+opacity: 1;
+right: 0;
+}
+
+.demo-dot {
+animation: xAxis 2.5s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+}
+
+.demo-dot::after {
+content: '';
+display: block;
+width: 20px;
+height: 20px;
+border-radius: 20px;
+background-color: #150202;
+animation: yAxis 2.5s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+}
+
+@keyframes yAxis {
+50% {
+animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+transform: translateY(-100px);
+}
+}
+
+@keyframes xAxis {
+50% {
+animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+transform: translateX(100px);
+}
+}
+
+.home .hc .text-1{
+font-size: 87px;
+text-align: right;
+margin-right:1150px;
+}
+
+.home .hc .text-2{
+font-size: 75px;
+font-weight: 600;
+margin-left: -3px;
+}
+.home .hc .text-3{
+font-size: 60px;
+margin: 5px 0;
+}
+
+.home .hc .text-3 span{
+color: rgb(0, 0, 0);
+font-weight: 500;
+}
+.wrapper {
+height: 10vh;
+/*This part is important for centering*/
+display: grid;
+place-items: center;
+}
+
+.typing-demo {
+width: 22ch;
+animation: typing 5s steps(20), blink .5s step-end infinite alternate;
+white-space: nowrap;
+overflow: hidden;
+color:rgb(79, 2, 2);
+border-right: 3px solid;
+font-family: monospace;
+font-size: 5em;
+}
+
+@keyframes typing {
+from {
+width: 0
+}
+}
+
+@keyframes blink {
+20% {
+border-color: transparent
+}
+
+}

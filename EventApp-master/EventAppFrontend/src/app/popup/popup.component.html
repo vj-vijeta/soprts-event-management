@@ -1,0 +1,19 @@
+<!-- alert -->
+<div class="bgBox centered" *ngIf="alertOn==true">
+  <form action="">
+    <div class="centered popupBox">
+      <div class="text-center">
+        <div>
+          <span class="alertText ">{{alertMsg}}</span><br>
+          <span class="alertText " *ngIf="alertMsg2">Event Date : {{alertMsg2 | date : 'fullDate'}}</span><br>
+          <div class="ucode container" *ngIf="userCode"><span class="alertText">{{userCode}}</span></div>
+        </div>
+        <div class="alertBtnBox text-right">
+          <button class="alertBtn btn" (click)="cancel()" *ngIf="cancelOn==true" type="submit">Cancel</button>
+          <button type="submit" class="alertBtn btn" (click)="ok()" type="submit" *ngIf="Ok!='Delete'">{{Ok}}</button>
+          <button class="alertBtn delbtn btn" (click)="ok()" type="submit" *ngIf="Ok=='Delete'">{{Ok}}</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

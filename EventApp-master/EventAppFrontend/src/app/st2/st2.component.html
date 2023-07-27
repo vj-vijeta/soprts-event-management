@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style>
+        p{
+        text-align: center;
+        padding-left: 50px;
+        padding-right: 50px;
+        font-size: medium;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+    .animate-charcter
+{
+   text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #010003 0%,
+    #285c70 10%,
+    #ceb2eb 29%,
+    #a7538f 35%,
+    #5a0f28 67%,
+    #e4d193 70%,
+    #9ed682 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 50% auto;
+  color: #fff;
+  background-clip: text;
+ 
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: inline-block;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ 
+}
+
+@keyframes textclip {
+  to {
+    background-position: 100% center;
+  }
+}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="animate-charcter" style="font-size: 70px;">Are you ready?</h3>
+    </div>
+  </div>
+</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h6 class="animate-charcter" style="font-size: 50;">Be the part of the wholesome events for athelatics!</h6>
+      </div>
+    </div>
+  </div>
+  <p> The application is solely built to know abouth the standard events happening.</p>
+  <h1 style="padding-left: 20px; "> About All Events</h1>
+  <p> This website is developed for knowing the events and event registration the events database is used to identify the usage of the player and to improver the features in future this application consist of user friendly features such as password chage and account deletion  </p>
+  <span>
+    <p>
+        <button class="button" style="vertical-align:middle">
+          <span routerLink="/home">join now</span>
+        </button>
+      </p>
+    <marquee width="100%" direction="left" height="50%" scrollamount="12">
+         <img src="\assets\images\track1.jpeg" width="20%" height="20%">
+         <img src="\assets\images\track2.jpeg"width="20%" height="20%">
+         <img src="\assets\images\track3.jpeg" width="20%" height="20%">
+         <img src="\assets\images\track4.jpeg"width="20%" height="20%">
+         <img src="\assets\images\track5.jpeg" width="20%" height="20%">.
+         <img src="\assets\images\track6.jpeg"width="20%" height="20%">
+
+       </marquee>
+  </span>
+  <button>
+    <span routerLink="/admin">admins</span>
+  </button>
+</body>
+</html>

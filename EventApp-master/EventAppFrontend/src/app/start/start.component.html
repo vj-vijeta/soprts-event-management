@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<html style="background-color: black;">
+   <!-- <style>
+    html{
+        background-color: black;
+    }
+    .button {
+    border: none;
+    color: yellowgreen;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    background-color: rgb(41, 44, 48);
+    border-radius: 4px;
+    padding: 20px;
+    width: 200px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+    }
+    
+    .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    }
+    
+    .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+    }
+    
+    .button:hover span {
+    padding-right: 25px;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+    
+    .button:hover span:after {
+    opacity: 1;
+    right: 0;
+    }
+    
+    .demo-dot {
+    animation: xAxis 2.5s infinite cubic-bezier(0.02, 0.01, 0.21, 1);
+    }
+    
+    .demo-dot::after {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    animation: yAxis 2.5s infinite cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    }
+    
+    @keyframes yAxis {
+    50% {
+    animation-timing-function: cubic-bezier(0.02, 0.01, 0.21, 1);
+    transform: translateY(-100px);
+    }
+    }
+    
+    @keyframes xAxis {
+    50% {
+    animation-timing-function: cubic-bezier(0.3, 0.27, 0.07, 1.64);
+    transform: translateX(100px);
+    }
+    }
+    
+    .home .hc .text-1{
+    font-size: 87px;
+    text-align: right;
+    margin-right:1150px;
+    }
+    
+    .home .hc .text-2{
+    font-size: 75px;
+    font-weight: 600;
+    margin-left: -3px;
+    }
+    .home .hc .text-3{
+    font-size: 60px;
+    margin: 5px 0;
+    }
+    
+    .home .hc .text-3 span{
+    color: yellowgreen;
+    font-weight: 500;
+    }
+    .wrapper {
+    height: 10vh;
+    /*This part is important for centering*/
+    display: grid;
+    place-items: center;
+    }
+    
+    .typing-demo {
+    width: 22ch;
+    animation: typing 6s steps(25), blink .7s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    color:white;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 5em;
+    }
+    
+    @keyframes typing {
+    from {
+    width: 0
+    }
+    }
+    
+    @keyframes blink {
+    20% {
+    border-color: transparent
+    }
+    
+    }
+    </style>-->
+
+<script type="text/javascript">
+  function range1(j){var x=[];var i=1;while(x.push(i++)<j){};return x}
+
+function getRCurve(tx,bx,tc,bc,am){
+  //let tx = pt11.x;
+  //let bx = pt21.x;
+  let x1 = random([-1,1])*random()*tx+tc.x;
+  let x2 = random([-1,1])*random()*bx+bc.x;
+  let y1 = random([-1,1])*random()*tx+tc.y;
+  let y2 = random([-1,1])*random()*bx+bc.y;
+  let pt1 = createVector(x1,y1);
+  let pt2 = createVector(x2,y2);
+  let pt12 = pt2.copy().sub(pt1);
+  let dinc = pt12.mag()/(2*cnumps);
+  pt12.normalize();
+  let opt12 = pt12.copy().rotate(PI/2);
+  let pts =[pt1.copy()];
+  var npt = pt1.copy();
+  for (var i = 0; i < 2*cnumps; i++){
+    npt = npt.copy().add(pt12.copy().mult(dinc));
+    let ppt = npt.copy();
+    if (i%2==0){
+      
+      var rinc = random([1,1])*random([2*am,2.5*am,2.75*am,3*am,3.25*am,3.50*am,3.75*am,4*am]);
+      if (i%4==0){
+        rinc*=-1;
+      }
+      ppt.add(opt12.copy().mult(rinc));
+    }
+    pts.push(ppt.copy());
+  }
+  
+  var m = random(range1(pts.length-1));
+ 
+  var n = (m+1)%(pts.length-1);
+  if(n==0){
+    n=1;
+  }
+  let nt =random();
+  objs.push({pts:pts, t1:nt,t2:nt,tinc:.09,pt1ind:m,pt2ind:n,i:objs.length});
+}
+
+function drawRCurves(){
+  for (var i = 0; i < objs.length; i++){
+    let pts = objs[i].pts;
+    stroke(255/(i*.00015+1)+255/((objs.length-i)*.00015+1),255/(i*.00015+1)+255/((objs.length-i)*.00015+1),255/(i*.00085+1)+255/((objs.length-i)*.00085+1),(.5*255/((i)*.00005+1)+.5*255/((objs.length-i)*.05+1))*.15);
+    /*
+    beginShape();
+    curveVertex(pts[0].x,pts[0].y);
+    */
+    
+    for (var k = 0; k < pts.length-3; k+=1){
+      let pt1 = pts[k];
+      let pt2 = pts[k+1];
+      let pt3 = pts[k+2];
+      let pt4 = pts[k+3];
+      curve(pt1.x,pt1.y,pt2.x,pt2.y,pt3.x,pt3.y,pt4.x,pt4.y);
+      if (k==0){
+        curve(pt1.x,pt1.y,pt1.x,pt1.y,pt2.x,pt2.y,pt3.x,pt3.y);
+      }
+      if (k==pts.length-4){
+        curve(pt2.x,pt2.y,pt3.x,pt3.y,pt4.x,pt4.y,pt4.x,pt4.y);
+      }
+      //quadraticVertex(pt1.x,pt1.y, pt2.x,pt2.y);
+    //  curveVertex(pt1.x,pt1.y);
+      //curveVertex(pt2.x,pt2.y);
+    }
+    //endShape();
+  }
+}
+
+function incT(obj){
+  obj.t1+=obj.tinc;//*random();
+  obj.t2+=obj.tinc;//*random();
+  if (obj.t1>=.95){
+    obj.pt1ind+=1;
+    obj.pt1ind%=(obj.pts.length-1);
+    if (obj.pt1ind==0){
+      obj.pt1ind=1;
+    }
+    obj.t1%=.95;
+  }
+  if (obj.t2>=.95){
+    obj.pt2ind+=1;
+    obj.pt2ind%=(obj.pts.length-1);
+    if (obj.pt2ind==0){
+      obj.pt2ind=1;
+    }
+    obj.t2%=.95;
+  }
+}
+
+function drawAnim(obj){
+  let i = obj.i;
+  stroke(255/(i*.00015+1)+255/((objs.length-i)*.00015+1),255/(i*.00015+1)+255/((objs.length-i)*.00015+1),255/(i*.00195+1)+255/((objs.length-i)*.00195+1),(.5*255/((i)*.00005+1)+.5*255/((objs.length-i)*.05+1))*.55);
+  var pt1 = obj.pts[obj.pt1ind-1];
+  var pt2 = obj.pts[obj.pt1ind];
+  var pt3 = obj.pts[obj.pt2ind];
+  var pt4 = obj.pts[obj.pt2ind+1];
+  //interpolate anchor and contrl
+  var cpt1x = curvePoint(pt1.x,pt2.x,pt3.x,pt4.x,obj.t1);
+  var cpt1y = curvePoint(pt1.y,pt2.y,pt3.y,pt4.y,obj.t1);
+  
+  let apt1x = curvePoint(pt1.x,pt2.x,pt3.x,pt4.x,obj.t1+(1-obj.t1)/4);
+  let apt1y = curvePoint(pt1.y,pt2.y,pt3.y,pt4.y,obj.t1+(1-obj.t1)/4);
+  
+  let apt2x = curvePoint(pt1.x,pt2.x,pt3.x,pt4.x,obj.t2);
+  let apt2y = curvePoint(pt1.y,pt2.y,pt3.y,pt4.y,obj.t2);
+  
+  let cpt2x = curvePoint(pt1.x,pt2.x,pt3.x,pt4.x,obj.t2+(1-obj.t2)/4);
+  let cpt2y = curvePoint(pt1.y,pt2.y,pt3.y,pt4.y,obj.t2+(1-obj.t2)/4);
+  if (obj.pt1ind > obj.pt2ind && obj.pt1ind < (obj.pts.length-1)){
+    
+    var spt3 = obj.pts[obj.pt1ind+1];
+    cpt1x = curvePoint(pt1.x,pt2.x,spt3.x,spt3.x,obj.t1-.14);
+   cpt1y = curvePoint(pt1.y,pt2.y,spt3.y,spt3.y,obj.t1-.14);
+    /*
+    if (obj.pt1ind < obj.pts.length-1){
+      spt3 = obj.pts[obj.pt1ind+1];
+    }
+    */
+    let spt1 = obj.pts[obj.pt2ind-1];
+    apt2x = curvePoint(spt1.x,spt1.x,pt3.x,pt4.x,obj.t2+.16);
+    apt2y = curvePoint(spt1.y,spt1.y,pt3.y,pt4.y,obj.t2+.16);
+    curve(pt1.x,pt1.y,cpt1x,cpt1y,spt3.x,spt3.y,spt3.x,spt3.y);
+    curve(spt1.x,spt1.y,spt1.x,spt1.y,apt2x,apt2y,pt4.x,pt4.y);
+  }
+  else{
+ //ellipse(apt2x,apt2y,15,15);
+ curve(pt1.x,pt1.y,cpt1x,cpt1y,apt2x,apt2y,pt4.x,pt4.y);
+  }
+ // var pt4 = obj.pts[obj.pt2ind];
+  /*
+  if (obj.pt1ind!=obj.pt2ind){
+    
+  }
+  */
+}
+
+function drawRCurves2(){
+  for (var i = 0; i < objs.length; i++){
+    let obj = objs[i];
+    drawAnim(obj);
+    incT(obj);
+  }
+}
+
+var cnumps;
+var objs;
+
+function setup() { 
+  createCanvas(750, 500);
+  cnumps=16;
+  objs=[];
+  background(100);
+  let ra = 2*PI/64;
+  let tv1 = createVector(30,0);
+  let tv2 = createVector(200,0);
+  let cvec = createVector(375,250);
+  for (var i = 0; i < 64; i++){
+    
+    for (var j =0; j <5; j ++){
+      
+      getRCurve(5,10,tv1.copy().add(cvec),tv2.copy().add(cvec),.05*(1*i+(64-i)));
+    }
+    if (i < 32){
+    cnumps+=.12;
+    }
+    else{
+      cnumps-=.12;
+    }
+    tv1.rotate(ra);
+    tv2.rotate(ra);
+  }
+  
+  /*for (var i =0; i <300; i ++){
+  getRCurve(28,80,70,200,1.5);
+  }
+  for (var i =0; i <3000; i ++){
+  getRCurve(28,90,10,80,1.5);
+  }
+  for (var i =0; i <2000; i ++){
+  getRCurve(18,90,120,300,2);
+  }
+  for (var i =0; i <2000; i ++){
+  getRCurve(20,100,160,400,2);
+  }
+  for (var i =0; i <2000; i ++){
+  getRCurve(20,100,200,500,4);
+  }*/
+  
+  stroke(255*random(),random()*255,random()*255,5);
+  strokeWeight(1.5);
+  noFill();
+  curveTightness(0);
+  //drawRCurves();
+} 
+
+function draw() { 
+  background(0,4);
+  drawRCurves2();
+}
+</script>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.1/addons/p5.sound.min.js"></script>
+    <script type="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.11/typed.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="style.css">-->
+  </head>
+  <body class="demo-dot">
+    <div class="wrapper">
+    <div class="typing-demo">
+      <br>
+      <br>
+      Wanna Join A Sport ?
+    </div>
+</div>
+<br><br>
+<br><br>
+<br><br>
+<br>
+ <p style="align-items: center;">
+      <button class="button" style="vertical-align:middle">
+        <span routerLink="/st2">visit page</span>
+      </button>
+    </p>
+    <br><br><br>
+    <br>
+    <div class="wrapper">
+    <div class="typing-demo" style="color:rgb(32, 46, 5);">
+      .......Be the Doer!.
+    </div>
+    
+
+</div>
+   <!-- <script >
+    	var typed =new Typed(".typing",{
+    		strings:["Sport","Athelatics","marathon","Run","Jump","Play"],
+    		typespeed:100;
+    		backspeed:60;
+    		loop:true
+    	});
+    </script>
+    <section class="home" id="home">
+    	<div class="box">
+    <div class= "hc">
+    	<div class="text-1">Hi!</div>
+    	<div class="text-2">are you gonna join</div>
+    	<br>
+    	<div class="text-3">A<span class="typing"></span></div>
+    	</section>-->
+  </body>
+</html>
+
+
+

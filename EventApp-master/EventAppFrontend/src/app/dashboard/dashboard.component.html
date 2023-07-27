@@ -1,0 +1,373 @@
+<div id="dashOut" class="">
+    <!-- dashboard contents -->
+
+    <div id="dashBody">
+        <!-- welcome box getstarted -->
+        <div id="welcomebox" class="centered text-center" *ngIf="welcomeBox==true">
+            <div >
+                <div id="welcomeText"><span>Welcome {{userName}} !</span></div>
+                <div id="getstarted" type="button" class="btn" (click)="welcomeUser()"><span>Get started</span><span id="arrow">→</span></div>
+            </div>
+            <!-- <div id="historytext"><span>No History</span></div> -->
+        </div>
+
+        <!-- entry page -->
+        <div id="entryPage" class=" text-center" *ngIf="welcomeBox==false && home==true">
+            <!-- about space -->
+            <div class="row"></div>
+            <!-- event details -->
+            <div id="" class="" >
+                <div id="carouselExampleCaptions" class="carousel carousel-light slide imgbox" data-bs-ride="carousel">
+                    <div class="carousel-indicators indicatorsImg" >
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active btnindi" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" class=" btnindi" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" class="btnindi" aria-label="Slide 3"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" class=" btnindi" aria-label="Slide 4"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4" class="btnindi" aria-label="Slide 5"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="5" class="btnindi" aria-label="Slide 6"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="6" class="btnindi" aria-label="Slide 7"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="7" class="btnindi" aria-label="Slide 8"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="8" class=" btnindi" aria-label="Slide 9"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="9" class=" btnindi" aria-label="Slide 10"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="10" class=" btnindi" aria-label="Slide 11"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="11" class="btnindi" aria-label="Slide 12"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="12" class="btnindi" aria-label="Slide 13"></button>
+                      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="13" class="btnindi" aria-label="Slide 0"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="/assets/images/log_bg2.jpeg" class="evtImg vh-100">
+                        <div class="carousel-caption first">
+                          <h1 id="appname" class="eventname"><span class="fappname">A</span>LL <span class="fappname">E</span>VENTS</h1>
+                          <p class="eventdescription">Join the Best Ever Events !</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="/assets/images/log_bg3.jpg" class="evtImg vh-100">
+                        <div style="color:rgb(1, 4, 10);"class="carousel-caption first">
+                          <h1 id="appname" class="eventname"><span class="fappname">A</span>LL <span class="fappname">E</span>VENTS</h1>
+                          <p class="eventdescription">this is an application for registering for athelatics only!<br> less paper work !</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="/assets/images/log_bg4.png" class="evtImg vh-100">
+                        <div style="color:rgb(255, 255, 255);" class="carousel-caption first">
+                          <h1 id="appname" class="eventname"><span class="fappname">A</span>LL <span class="fappname">E</span>VENTS</h1>
+                          <p  class="eventdescription">this is an application for registering for athelatics only!<br> less paper work !</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="/assets/images/log_bg6.png" class="evtImg vh-100">
+                        <div style="color:rgb(168, 0, 0);" class="carousel-caption first">
+                          <h1 id="appname" class="eventname"><span class="fappname">A</span>LL <span class="fappname">E</span>VENTS</h1>
+                          <p  class="eventdescription">Be The Doer!</p>
+                        </div>
+                      </div>
+                      <div class="carousel-item active" data-bs-interval="3000">
+                        <img src="/assets/images/log_bg5.jpg" class="evtImg vh-100">
+                        <div style="color:rgb(255, 255, 255);" class="carousel-caption first">
+                          
+                          <!--<h1 id="appname" class="eventname"><span class="fappname">A</span>LL <span class="fappname">E</span>VENTS</h1>-->
+                          <p  class="eventdescription">RUN like there is no tommorow!</p>
+                        </div>
+                      </div>
+                      
+                      
+                      <div class="carousel-item" data-bs-interval="3000" *ngFor="let data of eventNamesArray">
+                        <img src={{data.img}} alt="" class="evtImg vh-100">
+                        <!-- <div class="eventsText">{{data.name}}</div> -->
+                        <div class="carousel-caption details">
+                          <h1 class="eventname">{{data.name}}</h1>
+                          <p class="eventdescription">{{data.description}}</p>
+                        </div>
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev posi" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next posi" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+            </div>
+
+        </div>
+
+        <!-- event Name selection -->
+        <div id="eventnamebox" class="container"  *ngIf="addEname==true" >
+            <div class="hoverBox" *ngFor="let data of eventNamesArray" >
+                <button class="evtnamebox text-center" (click)="selectEname(data.name)">
+                  <div class="evtname">{{data}}</div>
+                </button>
+            </div>
+
+            <div class="w-100 displayCenter p-2 pt-5 ">
+               <form action="http:/localhost:3003//admin/event/add" class=" p-5 boxShadow rounded" (ngSubmit)="newEvent()">
+                    <h3 class="text-center mb-5">Add New Event</h3>
+                    <input type="text" name="eventName"  [(ngModel)]="eventName" id="" placeholder="Event Name" class="form-control inp" 
+                    oninput="this.value = this.value.replace(/[^a-zA-Z\s-, ]+$/, '');">
+                    <input type="text" name="imgToUrl" [(ngModel)]="imgToUrl" id="" placeholder="Paste Event Image Url" class="form-control inp">
+                    <input type="submit" name="" id="" value="Add" class="form-control inp btn btn-primary">
+                </form>
+            </div>
+        </div>
+        
+        <!-- event date and time selection -->
+        <div id="eventdatebox" class="container text-center" >
+            <div class="" *ngIf="monthOn==true">
+                <h2 class="mt-2 p-0">Select Event</h2>
+                <div class="dateBox">
+                    <button class="monthBtn" (click)="selectMonth('100mts')">100mts</button>
+                    <button class="monthBtn" (click)="selectMonth('200mts')">200mts</button>
+                    <button class="monthBtn" (click)="selectMonth('hurdels')">hurdels</button>
+                    <button class="monthBtn" (click)="selectMonth('highjump')">high jump</button>
+                </div>
+                <div class="dateBox">
+                    <button class="monthBtn" (click)="selectMonth('long jump')">long jump</button>
+                    <button class="monthBtn" (click)="selectMonth('4x100mts')">4x100mts</button>
+                    <button class="monthBtn" (click)="selectMonth('4x400mts')">4x400mts</button>
+                    <button class="monthBtn" (click)="selectMonth('1500mts')">1500mts</button>
+                </div>
+                <div class="dateBox">
+                    <button class="monthBtn" (click)="selectMonth('20km walk')">20km walk</button>
+                    <button class="monthBtn" (click)="selectMonth('800mts')">800mts</button>
+                    <button class="monthBtn" (click)="selectMonth('5000mts')">5000mts</button>
+                    <button class="monthBtn" (click)="selectMonth('polevault')">polevault</button>
+                </div>
+                <div class="dateBox">
+
+                </div>
+            </div>
+            <div class="" *ngIf="dayOn==true">
+                <h2 class="mt-2 p-0">Select  no of teams </h2>
+                <div class="dateBox">
+                    <button class="dayBtn" (click)="selectDay(1)">1</button>
+                    <button class="dayBtn" (click)="selectDay(2)">2</button>
+                    <button class="dayBtn" (click)="selectDay(3)">3</button>
+                    <button class="dayBtn" (click)="selectDay(4)">4</button>
+                    <button class="dayBtn" (click)="selectDay(5)">5</button>
+                    <button class="dayBtn" (click)="selectDay(6)">6</button>
+                    <button class="dayBtn" (click)="selectDay(7)">7</button>
+                </div>
+               <div class="dateBox">
+                <button class="dayBtn" (click)="selectDay(8)">8</button>
+                <button class="dayBtn" (click)="selectDay(9)">9</button>
+                <button class="dayBtn" (click)="selectDay(10)">10</button>
+                <button class="dayBtn" (click)="selectDay(11)">11</button>
+                <button class="dayBtn" (click)="selectDay(12)">12</button>
+                <button class="dayBtn" (click)="selectDay(13)">13</button>
+                <button class="dayBtn" (click)="selectDay(14)">14</button>
+               </div>
+            
+            </div>
+            <div class="" *ngIf="yearOn==true">
+                <h2 class="mt-2 p-0">Select Events Year</h2>
+                <div class="dateBox">
+                    <button class="yearBtn" (click)="selectYear(2023)" *ngIf="leapyear==true">2023</button>
+                    <button class="yearBtn" (click)="selectYear(2024)" >2024</button>
+              
+            </div>
+        </div>
+
+        <!-- event confirmation  -->
+        <div *ngIf="Econfirm==true">
+            <h2 class="text-center boxHead boxShadow confirmtext" >Confirm Order</h2>
+            <div id="EconfirmBox" class="centered text-center">
+                <div class="centered confirmShadow">
+                    <div class="">
+                        <div class="Econfirmhead cnfmheight">Event name</div>
+                        <div class="Econfirmhead cnfmheight">Event team </div>
+                        <div class="Econfirmhead cnfmheight">User id</div>
+                    </div>
+                    <div class="">
+                        <div class="cnfmheight">:</div>
+                        <div class="cnfmheight">:</div>
+                        <div class="cnfmheight">:</div>
+                    </div>
+                    <div class="marginT">
+                        <div class="Econfirm cnfmheight">{{Ename}}</div>
+                        <div id="cnfmdate" class="Econfirm cnfmheight">{{Edate | date :'fullDate'}}</div>
+                        <div class="Econfirm cnfmheight">{{userId}}</div>
+                    </div>
+                </div>
+                <input type="submit" id="cartBtn"  class="btn selectBtn" (click)="toCart()" value="Add to Cart"> 
+                <input type="submit" id="confirmBtn"  class="btn selectBtn" (click)="confirmEvent()" value="Confirm"> 
+            </div>
+        </div>
+
+        <!-- event cart history -->        <!-- event cart history -->        <!-- event cart history -->
+
+        <div id="eventposition" *ngIf="eventcartShow==true">
+            <h2 class="mt-4 text-center boxHead boxShadow container"  *ngIf="user=='customer'">Cart</h2>
+            <h2 class="mt-4 text-center boxHead boxShadow container" *ngIf="user=='admin'">Confirmed Orders</h2>
+            <div id="evtBox" class="d-block container-fluid p-0 mt-4">
+                <table class="table" style="line-height: 3;">
+                    <thead class="table" id="thead">
+                        <tr class="">
+                            <th scope="row" class="text-center" >Sl.No</th>
+                            <th scope="col" *ngIf="user=='customer'">Status</th>
+                            <th scope="col" *ngIf="user=='admin'">User</th>                              
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Event team</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table">
+                        <tr *ngFor="let data of eventcartArray" class="text-center" id="tableopt">
+                            <th scope="row" id="slno" class="text-center" ></th>
+                            <td scope="col" *ngIf="user=='customer'">{{data.Status}}</td>
+                            <td scope="col" *ngIf="user=='admin'">{{data.UniqueId}}</td>                            
+                            <td scope="col">{{data.EventName}}</td>
+                            <td scope="col">{{data.EventDate | date :'fullDate'}}</td>
+                            <td scope="col">
+                                <div id="iconcolor" *ngIf="user=='customer'">
+                                    <i class="fas fa-plus tableicon" (click)="eventadd(data.EventName,data.EventDate)" type="button"></i>
+                                    <i class="fas fa-trash tableicon" (click)="delcart(data.EventName,data.EventDate)" type="button"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="text-center m-3 mt-5"><h1>Your account is registered since {{RegisteredDetails | date :'full'}}</h1></div> -->
+        </div>
+
+        <!-- event cart history ends -->        <!-- event cart history ends -->        <!-- event cart history ends -->
+
+        <!-- event add history -->        <!-- event add history -->        <!-- event add history -->
+
+        <div id="eventposition" *ngIf="eventaddShow==true">
+            <h2 class="mt-4 text-center boxHead boxShadow container" *ngIf="user=='customer'">Saved Events</h2>
+            <h2 class="mt-4 text-center boxHead boxShadow container" *ngIf="user=='admin'">Orders</h2>
+            <div id="evtBox" class="d-block container-fluid p-0 mt-4">
+                <table class="table" style="line-height: 3;">
+                    <thead class="table" id="thead">
+                        <tr class="">
+                            <th scope="row" class="text-center" >Sl.No</th>
+                            <th scope="col" *ngIf="user=='customer'">Status</th>
+                            <th scope="col" *ngIf="user=='admin'">User</th>                            
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Event Date</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="table">
+                        <tr *ngFor="let data of eventaddArray" class="text-center" id="tableopt">
+                            <th scope="row" id="slno" class="text-center"> </th>
+                            <td scope="col" *ngIf="user=='customer'">{{data.Status}}</td>
+                            <td scope="col" *ngIf="user=='admin'">{{data.UniqueId}}</td>
+                            <td scope="col">{{data.EventName}}</td>
+                            <td scope="col">{{data.EventDate | date :'fullDate'}}</td>
+                            <td scope="col">
+                                <div id="iconcolor" *ngIf="user=='customer'">
+                                    <i class="fas fa-pen tableicon"></i>display
+                                    <i class="fas fa-trash tableicon" (click)="del(data.EventName,data.EventDate)" type="button"></i>
+                                </div>
+                                <div id="iconcolor"*ngIf="user=='admin'">
+                                    <i class="fas fa-close tableicon" (click)="cancelOrder(data.UniqueId,data.EventName,data.EventDate)" type="button"></i>
+                                    <i class="fas fa-check tableicon" (click)="confirmOrder(data.UniqueId,data.EventName,data.EventDate)" type="button"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="text-center m-3 mt-5"><h1>Your account is registered since {{RegisteredDetails | date :'full'}}</h1></div> -->
+        </div>
+
+        <!-- event add history ends -->        <!-- event add history ends -->        <!-- event add history ends -->
+
+        <!-- event del history -->        <!-- event del history -->        <!-- event del history -->
+
+        <div id="eventposition" *ngIf="eventdelShow==true">
+            <h2 class="mt-4 text-center boxHead boxShadow container" *ngIf="user=='customer'">Deleted Events</h2>
+            <h2 class="mt-4 text-center boxHead boxShadow container" *ngIf="user=='admin'">Deleted Orders</h2>
+            <div id="evtBox" class="d-block container-fluid p-0 mt-4">
+                <table class="table " style="line-height: 3;">
+                    <thead class="table" id="thead">
+                        <tr class="">
+                            <th scope="row" class="text-center" >Sl.No</th>
+                            <th scope="col" *ngIf="user=='customer'">Status</th>
+                            <th scope="col" *ngIf="user=='admin'">User</th>
+                            <th scope="col">Event Name</th>
+                            <th scope="col">Event Date</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table">
+                        <tr *ngFor="let data of eventdelArray" class="">
+                            <th scope="row" id="slno" class="text-center" ></th>
+                            <td scope="col" *ngIf="user=='customer'">{{data.Status}}</td>
+                            <td scope="col" *ngIf="user=='admin'">{{data.UniqueId}}</td>
+                            <td scope="col">{{data.EventName}}</td>
+                            <td scope="col">{{data.EventDate | date :'fullDate'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- <div class="text-center m-3 mt-5"><h1>Your account is registered since {{RegisteredDetails | date :'full'}}</h1></div> -->
+        </div>
+
+        <!-- event del history ends -->        <!-- event del history ends -->        <!-- event del history ends -->
+
+    </div>
+</div>
+<!-- profile box -->
+<app-profile [showProfile]="showProfile" [security]="securityON"></app-profile>
+
+<!-- navbar -->
+
+<app-navbar [logsShow]="showlog" (logs)="LoggedDetails()" [settingShow]="settingShow" (options)="settingsOptions()" (deleteShow)="eventdelHistory()" (addShow)="eventaddHistory()" (delAcc)="deleteAcc()" (showprofile)="showPro()" (carts)="eventcartHistory()" (secure)="security()" ></app-navbar>
+
+
+<!-- popup -->
+<app-popup [Ok]="ok" [alertOn]="alertOn" [cancelOn]="cancelOn" [alertMsg]="alertMsg" [alertMsg2]="alertMsg2" (okBtn)="okBtn()" (cancelBtn)="cancelBtn()"></app-popup>
+
+<!-- chat it box -->
+<button id="maxBtn" class="" *ngIf="msgMinimize==true && msgOn==true && welcomeBox==false" (click)="max()"><i class="fa fa-envelope m-0" style="font-size: 1.2vmax;" ></i> Chat It</button>
+<div *ngIf="msgMinimize==false && msgOn==true">
+    <div id="msgoutBox" class="" *ngIf="welcomeBox==false">
+    <div id="msgBox" >
+        <h2 class="msgHead">Chat It</h2>
+        <i id="minusIcon" class="fas fa-minus" type="button" (click)="mini()"></i>
+        <div id="msgScroll">
+            <div *ngFor="let data of msgArray">
+                <div class="msg" *ngIf="data.UniqueId!=userId">
+                    <div >{{data.Message}}</div>
+                    <!-- <div id="nameposition">{{data.Name}}</div> -->
+                    <div id="pointposition">
+                        {{data.Name}} 
+                        ({{data.Chatpoint}})</div>
+                </div>
+                <div class="msg Muser" *ngIf="data.UniqueId==userId">
+                    <div >{{data.Message}}</div>
+                    <!-- <div id="nameposition">{{data.Name}}</div> -->
+                    <div id="pointposition" style="color: rgb(0, 0, 0);">
+                        {{data.Name}} 
+                        ({{data.Chatpoint}})</div>
+                </div>
+            </div>
+            <div class="lastspace"></div>
+        </div>
+        <h6 id="msgcomment" class="text-center"><i class="fa fa-lock"></i> Secure message transmission. Only last message will be saved</h6>
+        <div id="msgtab" class="displayCenter">
+            <input type="text" id="msginp" class="form-conrol" [(ngModel)]="msg">
+            <input type="submit" id="chatbtn" value="chat it" (click)="messageSend()" class="btn">
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Event Add btn -->
+<div *ngIf="welcomeBox==false && showProfile==false ">
+    <button id="addBtn" class="btn" *ngIf="addBtn==true && user!='admin'" (click)="addBtnClicked()"><i class="fa fa-plus" ></i><span> New Event</span></button>
+    <button id="addBtn" class="btn" *ngIf="addBtn==false" (click)="addBtnClicked()"><i class="" ></i><span> Cancel</span></button>    
+    <button id="addBtn" class="btn" *ngIf=" user=='admin' && addBtn==true" (click)="addBtnClicked()"><i class="" ></i><span>Events</span></button>    
+</div> 
+
+<!-- back btn -->
+<button id="prev" *ngIf="prevBtn==true" class="btn" (click)="prev()"><i class="fa fa-chevron-circle-left"  ></i></button>
+
+
+
